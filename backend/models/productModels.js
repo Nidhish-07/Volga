@@ -6,6 +6,16 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please enter product name"],
     trim: true,
   },
+  owner: {
+    type: String,
+    required: ["true", "Please enter owner name"],
+    trim: true,
+  },
+  contactNo: {
+    type: Number,
+    required: [true, "Please enter contact no"],
+    maxLength: [10, "Contact no cannot exceed more than 10 digits"],
+  },
   description: {
     type: String,
     required: [true, "Please enter product description"],
