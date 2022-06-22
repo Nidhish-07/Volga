@@ -13,8 +13,8 @@ import PeopleIcon from "@material-ui/icons/People";
 const SideBar = () => {
   return (
     <div className="sidebar">
-      <Link to="/">
-        <img src={logo} alt="Ecommerce" />
+      <Link>
+        <img src={logo} alt="Volga" />
       </Link>
       <Link to="/admin/dashboard">
         <p>

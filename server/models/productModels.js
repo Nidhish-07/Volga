@@ -8,12 +8,12 @@ const productSchema = new mongoose.Schema({
   },
   owner: {
     type: String,
-    required: ["true", "Please enter owner name"],
+    // required: ["true", "Please enter owner name"],
     trim: true,
   },
   contactNo: {
     type: Number,
-    required: [true, "Please enter contact no"],
+    // required: [true, "Please enter contact no"],
     maxLength: [10, "Contact no cannot exceed more than 10 digits"],
   },
   description: {
