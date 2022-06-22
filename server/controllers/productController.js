@@ -12,18 +12,23 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //* Get all products
-exports.getAllProducts = catchAsyncErrors(async (req, res) => {
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 10;
-  const productCount = await Product.countDocuments();
+  const productsCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
+    .filter();
 
-  const products = await apiFeature.query;
+  let products = await apiFeature.query;
+  let filteredProductsCount = products.length;
+  apiFeature.pagination(resultPerPage);
 
-  res.status(200).json({ success: true, products, productCount });
+  products = await apiFeature.query;
+
+  res
+    .status(200)
+    .json({ success: true, products,filteredProductsCount, productsCount, resultPerPage });
 });
 
 //* Get product details
@@ -41,7 +46,7 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-//* Update Products
+//* Update Products - admin
 
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   let product = await Product.findById(req.params.id);

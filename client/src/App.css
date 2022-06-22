@@ -3,3 +3,6 @@
   scroll-behavior: smooth;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
