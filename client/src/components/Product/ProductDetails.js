@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import MetaData from "../layout/MetaData";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const ProductDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`${product.name} --- Volga`} />
           <div className="productDetails">
             <div>
               <Carousel>

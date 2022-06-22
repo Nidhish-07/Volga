@@ -47,9 +47,10 @@
   position: absolute;
   top: 10vmax;
   left: 4vmax;
+  border: 3px solid black;
 }
 
-.categories{
+.categories {
   padding: 0%;
 }
 
