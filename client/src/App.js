@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/layout/Header/Header";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
 import Footer from "./components/layout/Footer/Footer";
@@ -28,6 +28,7 @@ import UsersList from "./components/admin/UsersList";
 import UpdateUser from "./components/admin/UpdateUser";
 import About from "./components/layout/About/About";
 import Contact from "./components/layout/Contact/Contact";
+import PageNotFound from "./components/layout/PageNotFound/PageNotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -41,56 +42,70 @@ function App() {
 
     store.dispatch(loadUser());
   }, []);
+
+  window.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+
   return (
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
-      <Route exact path="/" component={Home} />
-      <Route exact path="/product/:id" component={ProductDetails} />
-      <Route exact path="/products" component={Products} />
-      <Route path="/products/:keyword" component={Products} />
-      <Route exact path="/search" component={Search} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/contact" component={Contact} />
-      <Routes exact path="/account" component={Profile} />
-      <Routes exact path="/me/update" component={UpdateProfile} />
-      <Routes exact path="/password/update" component={UpdatePassword} />
-      <Route exact path="/password/forgot" component={ForgotPassword} />
-      <Route exact path="/password/reset/:token" component={ResetPassword} />
-      <Route exact path="/login" component={LoginAndSignUp} />
-      <Routes
-        isAdmin={true}
-        exact
-        path="/admin/dashboard"
-        component={Dashboard}
-      />
-      <Routes
-        isAdmin={true}
-        exact
-        path="/admin/products"
-        component={ProductList}
-      />
-      <Routes
-        isAdmin={true}
-        exact
-        path="/admin/product"
-        component={NewProduct}
-      />
 
-      <Routes
-        isAdmin={true}
-        exact
-        path="/admin/product/:id"
-        component={UpdateProduct}
-      />
-      <Routes isAdmin={true} exact path="/admin/users" component={UsersList} />
-      <Routes
-        isAdmin={true}
-        exact
-        path="/admin/users/:id"
-        component={UpdateUser}
-      />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product/:id" component={ProductDetails} />
+        <Route exact path="/products" component={Products} />
+        <Route path="/products/:keyword" component={Products} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Routes exact path="/account" component={Profile} />
+        <Routes exact path="/me/update" component={UpdateProfile} />
+        <Routes exact path="/password/update" component={UpdatePassword} />
+        <Route exact path="/password/forgot" component={ForgotPassword} />
+        <Route exact path="/password/reset/:token" component={ResetPassword} />
+        <Route exact path="/login" component={LoginAndSignUp} />
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/dashboard"
+          component={Dashboard}
+        />
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/products"
+          component={ProductList}
+        />
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/product"
+          component={NewProduct}
+        />
 
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/product/:id"
+          component={UpdateProduct}
+        />
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/users"
+          component={UsersList}
+        />
+        <Routes
+          isAdmin={true}
+          exact
+          path="/admin/users/:id"
+          component={UpdateUser}
+        />
+
+        <Route component={PageNotFound} />
+      </Switch>
       <Footer />
     </Router>
   );

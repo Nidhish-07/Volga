@@ -1,5 +1,8 @@
 .banner {
-  background-image: linear-gradient(to right, yellow, red);
+  background-image: url("../../images/matt-ragland-02z1I7gv4ao-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .banner > h1 {

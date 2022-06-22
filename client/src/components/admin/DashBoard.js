@@ -5,7 +5,6 @@ import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
-import { Line } from "react-chartjs-2";
 import { getAdminProduct } from "../../actions/productAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
 
@@ -19,18 +18,6 @@ const DashBoard = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
-    datasets: [
-      {
-        label: "TOTAL AMOUNT",
-        backgroundColor: ["rgb(0,150,255)"],
-        hoverBackgroundColor: ["rgb(0, 0, 255)"],
-        data: [0, 4000],
-      },
-    ],
-  };
-
   return (
     <div className="dashboard">
       <SideBar />
@@ -40,7 +27,7 @@ const DashBoard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹2000
+              <i>Man is the master of their own destiny.</i>
             </p>
           </div>
           <div className="dashboardSummaryBox2">
@@ -55,10 +42,6 @@ const DashBoard = () => {
               <p>{users && users.length}</p>
             </Link>
           </div>
-        </div>
-
-        <div className="lineChart">
-          <Line data={lineState} />
         </div>
       </div>
     </div>
