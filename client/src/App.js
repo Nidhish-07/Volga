@@ -10,24 +10,37 @@ import ProductDetails from "./components/Product/ProductDetails";
 import Products from "./components/Product/Products.js";
 import Search from "./components/Product/Search.js";
 import LoginAndSignUp from "./components/User/LoginAndSignUp";
+import store from "./store";
+import { loadUser, updateProfile } from "./actions/userAction";
+import UserOptions from "./components/layout/Header/UserOptions";
+import { useSelector } from "react-redux";
+import Profile from "./components/User/Profile";
+import Routes from "./components/Route/Routes";
+import UpdateProfile from "./components/User/UpdateProfile";
 
 function App() {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+
   React.useEffect(() => {
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
+
+    store.dispatch(loadUser());
   }, []);
   return (
     <Router>
       <Header />
-
+      {isAuthenticated && <UserOptions user={user} />}
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={ProductDetails} />
       <Route exact path="/products" component={Products} />
       <Route path="/products/:keyword" component={Products} />
       <Route exact path="/search" component={Search} />
+      <Routes exact path="/account" component={Profile} />
+      <Routes exact path="/me/update" component={UpdateProfile} />
       <Route exact path="/login" component={LoginAndSignUp} />
 
       <Footer />

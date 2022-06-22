@@ -1,5 +1,5 @@
 .banner {
-  background-image: linear-gradient(to right, #635dc0, #3027ae);
+  background-image: linear-gradient(to right, yellow, red);
 }
 
 .banner > h1 {
@@ -35,7 +35,7 @@
   position: absolute;
   top: 0%;
   left: 0;
-  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+  clip-path: polygon(100% 100%, 0 100%, 100% 100%);
   max-width: 100%;
 }
 
@@ -62,7 +62,6 @@
 
   transform: translateY(-1vmax);
 }
-
 
 @media screen and (max-width: 600px) {
   .itemCard > p {
