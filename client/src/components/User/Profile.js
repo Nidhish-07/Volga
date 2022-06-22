@@ -33,7 +33,6 @@ const Profile = ({ history }) => {
 
               <Link to="/me/update">Edit Profile</Link>
               <div>
-                <Link to="/orders">My Orders</Link>
                 <Link to="/password/update">Change Password</Link>
               </div>
             </div>

@@ -30,7 +30,9 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^1.1.2",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "chart.js": "^3.5.1",
+    "react-chartjs-2": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

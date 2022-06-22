@@ -35,7 +35,8 @@ const ProductDetails = ({ match }) => {
                 {product.images &&
                   product.images.map((item, i) => (
                     <img
-                      className="CarouselImage"
+                      className="carouselImage"
+                      width={"30vw"}
                       key={i}
                       src={item.url}
                       alt={`${i} Slide`}
@@ -55,9 +56,7 @@ const ProductDetails = ({ match }) => {
               </div>
               <div className="detailsBlock3">
                 <h1 className="text-xl">{`₹${product.price}`}</h1>
-                <div className="detailsBlock3-1">
-                  <button>Add to Order</button>
-                </div>
+
                 <p>
                   Status:
                   <b
